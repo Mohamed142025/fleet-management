@@ -1,0 +1,707 @@
+{
+ "actions": [],
+ "creation": "2026-09-27 05:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "request_section",
+  "status",
+  "project",
+  "company",
+  "cost_center",
+  "request_column",
+  "vehicle_type",
+  "billing_mode",
+  "scheduled_time",
+  "planned_days",
+  "requester_column",
+  "requested_by",
+  "request_notes",
+  "stops_section",
+  "stops",
+  "assignment_section",
+  "vehicle",
+  "is_company_vehicle",
+  "driver",
+  "driver_name",
+  "driver_user",
+  "supplier",
+  "assignment_column",
+  "assigned_by",
+  "assigned_on",
+  "response_due",
+  "timeout_alerted",
+  "accepted_on",
+  "decline_reason",
+  "execution_column",
+  "started_on",
+  "finished_on",
+  "odometer_start",
+  "odometer_end",
+  "amount_section",
+  "planned_km",
+  "actual_km",
+  "return_km",
+  "manual_km",
+  "distance_source",
+  "distance_flag",
+  "amount_column",
+  "waiting_minutes",
+  "worked_days",
+  "overtime_hours",
+  "holiday_days",
+  "is_night",
+  "is_holiday",
+  "amount_column_2",
+  "expected_amount",
+  "base_amount",
+  "return_amount",
+  "surcharge_amount",
+  "waiting_amount",
+  "daily_amount",
+  "overtime_amount",
+  "cancellation_compensation",
+  "total_amount",
+  "rates_section",
+  "rate_per_km",
+  "minimum_fare",
+  "empty_return_percent",
+  "free_waiting_minutes",
+  "waiting_rate_per_hour",
+  "rates_column",
+  "night_surcharge_percent",
+  "holiday_surcharge_percent",
+  "daily_rate",
+  "daily_hours",
+  "overtime_rate_per_hour",
+  "settlement_section",
+  "payment_approved_by",
+  "payment_approved_on",
+  "approval_note",
+  "settlement_column",
+  "cancel_reason",
+  "cancelled_on",
+  "purchase_invoice"
+ ],
+ "fields": [
+  {
+   "fieldname": "request_section",
+   "fieldtype": "Section Break",
+   "label": "الطلب"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "الحالة",
+   "options": "مسودة\nبانتظار الاعتماد\nمسندة\nمقبولة\nجارية\nمنتهية\nمعتمدة للصرف\nمفوترة\nمرفوضة من السواق\nملغاة",
+   "default": "مسودة",
+   "read_only": 1,
+   "no_copy": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "المشروع",
+   "options": "Project",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "الشركة",
+   "options": "Company",
+   "reqd": 1,
+   "fetch_from": "project.company",
+   "fetch_if_empty": 1
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "مركز التكلفة",
+   "options": "Cost Center",
+   "fetch_from": "project.cost_center",
+   "fetch_if_empty": 1
+  },
+  {
+   "fieldname": "request_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "vehicle_type",
+   "fieldtype": "Link",
+   "label": "نوع العربية",
+   "options": "Fleet Vehicle Type",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "billing_mode",
+   "fieldtype": "Select",
+   "label": "طريقة الحساب",
+   "options": "بالكيلو\nباليومية",
+   "default": "بالكيلو",
+   "reqd": 1
+  },
+  {
+   "fieldname": "scheduled_time",
+   "fieldtype": "Datetime",
+   "label": "الميعاد",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "planned_days",
+   "fieldtype": "Int",
+   "label": "عدد الأيام المتوقع",
+   "default": "1",
+   "depends_on": "eval:doc.billing_mode=='باليومية'"
+  },
+  {
+   "fieldname": "requester_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "requested_by",
+   "fieldtype": "Link",
+   "label": "طلبها",
+   "options": "User",
+   "read_only": 1,
+   "default": "__user",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "request_notes",
+   "fieldtype": "Small Text",
+   "label": "تفاصيل الطلب"
+  },
+  {
+   "fieldname": "stops_section",
+   "fieldtype": "Section Break",
+   "label": "النقاط"
+  },
+  {
+   "fieldname": "stops",
+   "fieldtype": "Table",
+   "label": "النقاط",
+   "options": "Fleet Trip Stop",
+   "reqd": 1
+  },
+  {
+   "fieldname": "assignment_section",
+   "fieldtype": "Section Break",
+   "label": "الإسناد",
+   "depends_on": "eval:doc.vehicle || doc.driver"
+  },
+  {
+   "fieldname": "vehicle",
+   "fieldtype": "Link",
+   "label": "العربية",
+   "options": "Vehicle",
+   "read_only": 1,
+   "no_copy": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "is_company_vehicle",
+   "fieldtype": "Check",
+   "label": "عربية شركة",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "driver",
+   "fieldtype": "Link",
+   "label": "السواق",
+   "options": "Driver",
+   "read_only": 1,
+   "no_copy": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "driver_name",
+   "fieldtype": "Data",
+   "label": "اسم السواق",
+   "fetch_from": "driver.full_name",
+   "read_only": 1,
+   "no_copy": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "driver_user",
+   "fieldtype": "Link",
+   "label": "مستخدم السواق",
+   "options": "User",
+   "fetch_from": "driver.user",
+   "read_only": 1,
+   "no_copy": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "المورد",
+   "options": "Supplier",
+   "read_only": 1,
+   "no_copy": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "assignment_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "assigned_by",
+   "fieldtype": "Link",
+   "label": "أسندها",
+   "options": "User",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "assigned_on",
+   "fieldtype": "Datetime",
+   "label": "وقت الإسناد",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "response_due",
+   "fieldtype": "Datetime",
+   "label": "آخر ميعاد للرد",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "timeout_alerted",
+   "fieldtype": "Check",
+   "label": "اتبعت تنبيه عدم الرد",
+   "read_only": 1,
+   "no_copy": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "accepted_on",
+   "fieldtype": "Datetime",
+   "label": "قبلها",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "decline_reason",
+   "fieldtype": "Small Text",
+   "label": "سبب الرفض",
+   "read_only": 1,
+   "no_copy": 1,
+   "depends_on": "decline_reason"
+  },
+  {
+   "fieldname": "execution_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "started_on",
+   "fieldtype": "Datetime",
+   "label": "بدأت",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "finished_on",
+   "fieldtype": "Datetime",
+   "label": "انتهت",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "odometer_start",
+   "fieldtype": "Int",
+   "label": "عداد البداية",
+   "read_only": 1,
+   "no_copy": 1,
+   "depends_on": "is_company_vehicle"
+  },
+  {
+   "fieldname": "odometer_end",
+   "fieldtype": "Int",
+   "label": "عداد النهاية",
+   "read_only": 1,
+   "no_copy": 1,
+   "depends_on": "is_company_vehicle"
+  },
+  {
+   "fieldname": "amount_section",
+   "fieldtype": "Section Break",
+   "label": "المسافة والمستحق",
+   "depends_on": "eval:doc.planned_km || doc.expected_amount || doc.total_amount || doc.finished_on"
+  },
+  {
+   "fieldname": "planned_km",
+   "fieldtype": "Float",
+   "label": "المسافة المخططة (كم)",
+   "read_only": 1,
+   "no_copy": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "actual_km",
+   "fieldtype": "Float",
+   "label": "المسافة الفعلية (كم)",
+   "read_only": 1,
+   "no_copy": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "return_km",
+   "fieldtype": "Float",
+   "label": "مسافة الرجوع (كم)",
+   "read_only": 1,
+   "no_copy": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "manual_km",
+   "fieldtype": "Float",
+   "label": "مسافة يدوية (كم)",
+   "read_only": 1,
+   "no_copy": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "distance_source",
+   "fieldtype": "Select",
+   "label": "مصدر المسافة",
+   "options": "\nالخريطة\nيدوي",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "distance_flag",
+   "fieldtype": "Check",
+   "label": "فرق كبير عن المخطط",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "amount_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "waiting_minutes",
+   "fieldtype": "Int",
+   "label": "الانتظار الزايد (دقيقة)",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "worked_days",
+   "fieldtype": "Float",
+   "label": "الأيام",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "overtime_hours",
+   "fieldtype": "Float",
+   "label": "ساعات الإضافي",
+   "read_only": 1,
+   "no_copy": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "holiday_days",
+   "fieldtype": "Int",
+   "label": "أيام إجازة",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "is_night",
+   "fieldtype": "Check",
+   "label": "رحلة ليلية",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "is_holiday",
+   "fieldtype": "Check",
+   "label": "في إجازة",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "amount_column_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "expected_amount",
+   "fieldtype": "Currency",
+   "label": "المبلغ المتوقع",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "base_amount",
+   "fieldtype": "Currency",
+   "label": "أساس المسافة",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "return_amount",
+   "fieldtype": "Currency",
+   "label": "الرجوع الفاضي",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "surcharge_amount",
+   "fieldtype": "Currency",
+   "label": "الإضافي الليلي/الإجازة",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "waiting_amount",
+   "fieldtype": "Currency",
+   "label": "الانتظار",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "daily_amount",
+   "fieldtype": "Currency",
+   "label": "اليوميات",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "overtime_amount",
+   "fieldtype": "Currency",
+   "label": "الإضافي",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "cancellation_compensation",
+   "fieldtype": "Currency",
+   "label": "تعويض الإلغاء",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "المستحق",
+   "read_only": 1,
+   "no_copy": 1,
+   "bold": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "rates_section",
+   "fieldtype": "Section Break",
+   "label": "الأسعار المثبّتة وقت الإسناد",
+   "collapsible": 1,
+   "depends_on": "assigned_on"
+  },
+  {
+   "fieldname": "rate_per_km",
+   "fieldtype": "Currency",
+   "label": "سعر الكيلو",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "minimum_fare",
+   "fieldtype": "Currency",
+   "label": "الحد الأدنى",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "empty_return_percent",
+   "fieldtype": "Percent",
+   "label": "الرجوع الفاضي %",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "free_waiting_minutes",
+   "fieldtype": "Int",
+   "label": "دقائق انتظار مجانية",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "waiting_rate_per_hour",
+   "fieldtype": "Currency",
+   "label": "سعر ساعة الانتظار",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "rates_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "night_surcharge_percent",
+   "fieldtype": "Percent",
+   "label": "إضافي ليلي %",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "holiday_surcharge_percent",
+   "fieldtype": "Percent",
+   "label": "إضافي إجازة %",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "daily_rate",
+   "fieldtype": "Currency",
+   "label": "سعر اليوم",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "daily_hours",
+   "fieldtype": "Float",
+   "label": "ساعات اليوم",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "overtime_rate_per_hour",
+   "fieldtype": "Currency",
+   "label": "سعر ساعة الإضافي",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "settlement_section",
+   "fieldtype": "Section Break",
+   "label": "الاعتماد والصرف",
+   "depends_on": "eval:doc.payment_approved_by || doc.cancel_reason || doc.purchase_invoice"
+  },
+  {
+   "fieldname": "payment_approved_by",
+   "fieldtype": "Link",
+   "label": "اعتمدها للصرف",
+   "options": "User",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "payment_approved_on",
+   "fieldtype": "Datetime",
+   "label": "وقت الاعتماد للصرف",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "approval_note",
+   "fieldtype": "Small Text",
+   "label": "ملاحظة الاعتماد",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "settlement_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cancel_reason",
+   "fieldtype": "Small Text",
+   "label": "سبب الإلغاء",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "cancelled_on",
+   "fieldtype": "Datetime",
+   "label": "وقت الإلغاء",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "purchase_invoice",
+   "fieldtype": "Link",
+   "label": "فاتورة المشتريات",
+   "options": "Purchase Invoice",
+   "read_only": 1,
+   "no_copy": 1
+  }
+ ],
+ "links": [],
+ "modified": "2026-09-27 06:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "MS Fleet",
+ "name": "Fleet Trip",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "create": 1,
+   "read": 1,
+   "write": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "System Manager",
+   "permlevel": 1,
+   "read": 1
+  },
+  {
+   "role": "Fleet Manager",
+   "create": 1,
+   "read": 1,
+   "write": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Fleet Manager",
+   "permlevel": 1,
+   "read": 1
+  },
+  {
+   "role": "Fleet Requester",
+   "create": 1,
+   "read": 1,
+   "write": 1,
+   "report": 1,
+   "print": 1,
+   "if_owner": 1
+  },
+  {
+   "role": "Accounts User",
+   "read": 1,
+   "report": 1,
+   "print": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "autoname": "FT-.YYYY.-.#####",
+ "naming_rule": "Expression (old style)",
+ "title_field": "project",
+ "show_title_field_in_link": 0,
+ "search_fields": "project,driver_name,status",
+ "track_changes": 1
+}

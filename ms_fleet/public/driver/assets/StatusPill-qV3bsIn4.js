@@ -1,0 +1,1 @@
+import{o as t,f as a,t as e,B as r,u as n,S as l}from"./index-DxeJ_NP1.js";const i={__name:"StatusPill",props:{status:String},setup(s){return(o,c)=>(t(),a("span",{class:r(["pill",n(l)[s.status]||"bg-gray-100 text-gray-700"])},e(s.status),3))}};export{i as _};

@@ -1,0 +1,244 @@
+{
+ "actions": [],
+ "creation": "2026-09-27 05:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "location",
+  "purpose",
+  "receiver",
+  "notes",
+  "latitude",
+  "longitude",
+  "planned_leg_km",
+  "arrival_section",
+  "arrived_on",
+  "arrived_lat",
+  "arrived_lng",
+  "arrived_accuracy_m",
+  "distance_from_stop_m",
+  "out_of_range",
+  "arrival_column",
+  "departed_on",
+  "waiting_minutes",
+  "leg_km",
+  "photo",
+  "confirmation_section",
+  "confirmed",
+  "confirmed_via",
+  "confirmation_column",
+  "confirmed_by",
+  "confirmed_on",
+  "confirmation_code",
+  "code_attempts"
+ ],
+ "fields": [
+  {
+   "fieldname": "location",
+   "fieldtype": "Link",
+   "label": "المكان",
+   "options": "Fleet Location",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Select",
+   "label": "الغرض",
+   "options": "تحميل\nتنزيل\nركاب\nأخرى",
+   "default": "تنزيل",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "receiver",
+   "fieldtype": "Link",
+   "label": "المستلم",
+   "options": "User",
+   "in_list_view": 1,
+   "columns": 2,
+   "description": "مطلوب في نقاط التنزيل. بيأكد الاستلام من حسابه أو بكود بيدّيه للسواق."
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Data",
+   "label": "ملاحظات",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "latitude",
+   "fieldtype": "Float",
+   "label": "خط العرض",
+   "precision": "6",
+   "fetch_from": "location.latitude",
+   "read_only": 1
+  },
+  {
+   "fieldname": "longitude",
+   "fieldtype": "Float",
+   "label": "خط الطول",
+   "precision": "6",
+   "fetch_from": "location.longitude",
+   "read_only": 1
+  },
+  {
+   "fieldname": "planned_leg_km",
+   "fieldtype": "Float",
+   "label": "المسافة المخططة من النقطة السابقة",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "arrival_section",
+   "fieldtype": "Section Break",
+   "label": "التنفيذ"
+  },
+  {
+   "fieldname": "arrived_on",
+   "fieldtype": "Datetime",
+   "label": "وصل",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "arrived_lat",
+   "fieldtype": "Float",
+   "label": "خط عرض الوصول",
+   "precision": "6",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "arrived_lng",
+   "fieldtype": "Float",
+   "label": "خط طول الوصول",
+   "precision": "6",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "arrived_accuracy_m",
+   "fieldtype": "Float",
+   "label": "دقة الموقع (متر)",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "distance_from_stop_m",
+   "fieldtype": "Float",
+   "label": "البعد عن النقطة (متر)",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "out_of_range",
+   "fieldtype": "Check",
+   "label": "خارج نطاق النقطة",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "arrival_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "departed_on",
+   "fieldtype": "Datetime",
+   "label": "اتحرك",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "waiting_minutes",
+   "fieldtype": "Int",
+   "label": "الانتظار (دقيقة)",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "leg_km",
+   "fieldtype": "Float",
+   "label": "المسافة الفعلية من النقطة السابقة",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "photo",
+   "fieldtype": "Attach Image",
+   "label": "الصورة",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "confirmation_section",
+   "fieldtype": "Section Break",
+   "label": "تأكيد الاستلام"
+  },
+  {
+   "fieldname": "confirmed",
+   "fieldtype": "Check",
+   "label": "تم تأكيد الاستلام",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "confirmed_via",
+   "fieldtype": "Select",
+   "label": "طريقة التأكيد",
+   "options": "\nحساب المستلم\nكود المستلم\nاستثناء",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "confirmation_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "confirmed_by",
+   "fieldtype": "Link",
+   "label": "أكّده",
+   "options": "User",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "confirmed_on",
+   "fieldtype": "Datetime",
+   "label": "وقت التأكيد",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "confirmation_code",
+   "fieldtype": "Data",
+   "label": "كود المستلم",
+   "permlevel": 1,
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "code_attempts",
+   "fieldtype": "Int",
+   "label": "محاولات الكود",
+   "hidden": 1,
+   "read_only": 1,
+   "no_copy": 1
+  }
+ ],
+ "links": [],
+ "modified": "2026-09-27 05:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "MS Fleet",
+ "name": "Fleet Trip Stop",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1
+}

@@ -1,0 +1,85 @@
+{
+ "actions": [],
+ "creation": "2026-09-27 05:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "site_name",
+  "endpoint",
+  "protocol",
+  "port",
+  "site_column",
+  "user",
+  "registered_on"
+ ],
+ "fields": [
+  {
+   "fieldname": "site_name",
+   "fieldtype": "Data",
+   "label": "الموقع",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "endpoint",
+   "fieldtype": "Data",
+   "label": "العنوان",
+   "read_only": 1
+  },
+  {
+   "fieldname": "protocol",
+   "fieldtype": "Data",
+   "label": "البروتوكول",
+   "read_only": 1
+  },
+  {
+   "fieldname": "port",
+   "fieldtype": "Data",
+   "label": "المنفذ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "site_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "مستخدم الربط",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "registered_on",
+   "fieldtype": "Datetime",
+   "label": "وقت التسجيل",
+   "read_only": 1
+  }
+ ],
+ "links": [],
+ "modified": "2026-09-27 05:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "MS Fleet",
+ "name": "Fleet Push Site",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "create": 1,
+   "read": 1,
+   "write": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "autoname": "field:site_name",
+ "naming_rule": "By fieldname"
+}

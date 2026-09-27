@@ -1,0 +1,205 @@
+{
+ "actions": [],
+ "creation": "2026-09-27 05:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "operation_section",
+  "night_start",
+  "night_end",
+  "holiday_list",
+  "operation_column",
+  "response_timeout_minutes",
+  "distance_tolerance_percent",
+  "geofence_radius_m",
+  "payment_approver_role",
+  "maps_section",
+  "maps_provider",
+  "maps_column",
+  "maps_api_key",
+  "app_section",
+  "app_name",
+  "theme_color",
+  "app_column",
+  "app_logo",
+  "relay_section",
+  "relay_enabled",
+  "firebase_vapid_key",
+  "firebase_service_account",
+  "relay_column",
+  "firebase_web_config"
+ ],
+ "fields": [
+  {
+   "fieldname": "operation_section",
+   "fieldtype": "Section Break",
+   "label": "التشغيل"
+  },
+  {
+   "fieldname": "night_start",
+   "fieldtype": "Time",
+   "label": "بداية الليل",
+   "default": "22:00:00"
+  },
+  {
+   "fieldname": "night_end",
+   "fieldtype": "Time",
+   "label": "نهاية الليل",
+   "default": "06:00:00"
+  },
+  {
+   "fieldname": "holiday_list",
+   "fieldtype": "Link",
+   "label": "قائمة الإجازات",
+   "options": "Holiday List",
+   "description": "الإجازات والعطلات الأسبوعية اللي يتطبق عليها إضافي الإجازة."
+  },
+  {
+   "fieldname": "operation_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "response_timeout_minutes",
+   "fieldtype": "Int",
+   "label": "مهلة رد السواق (دقيقة)",
+   "default": "30"
+  },
+  {
+   "fieldname": "distance_tolerance_percent",
+   "fieldtype": "Percent",
+   "label": "الفرق المسموح عن المسافة المخططة %",
+   "default": "20"
+  },
+  {
+   "fieldname": "geofence_radius_m",
+   "fieldtype": "Int",
+   "label": "نطاق الوصول حول النقطة (متر)",
+   "default": "300"
+  },
+  {
+   "fieldname": "payment_approver_role",
+   "fieldtype": "Link",
+   "label": "دور الاعتماد للصرف",
+   "options": "Role",
+   "default": "Fleet Manager"
+  },
+  {
+   "fieldname": "maps_section",
+   "fieldtype": "Section Break",
+   "label": "الخريطة"
+  },
+  {
+   "fieldname": "maps_provider",
+   "fieldtype": "Select",
+   "label": "مزوّد الخريطة",
+   "options": "\nGoogle Maps\nOpenRouteService",
+   "permlevel": 1,
+   "description": "من غير مزوّد ومفتاح، المسافة الفعلية بتتكتب يدوي من إدارة الحركة."
+  },
+  {
+   "fieldname": "maps_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "maps_api_key",
+   "fieldtype": "Password",
+   "label": "مفتاح الخريطة",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "app_section",
+   "fieldtype": "Section Break",
+   "label": "تطبيق السواق"
+  },
+  {
+   "fieldname": "app_name",
+   "fieldtype": "Data",
+   "label": "اسم التطبيق",
+   "default": "MS Fleet"
+  },
+  {
+   "fieldname": "theme_color",
+   "fieldtype": "Color",
+   "label": "لون التطبيق",
+   "default": "#0E3B2E"
+  },
+  {
+   "fieldname": "app_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "app_logo",
+   "fieldtype": "Attach Image",
+   "label": "لوجو التطبيق"
+  },
+  {
+   "fieldname": "relay_section",
+   "fieldtype": "Section Break",
+   "label": "الإشعارات (السيرفر الوسيط)",
+   "description": "نفس خدمة إشعارات Frappe: حط عنوان الموقع ده في push_relay_server_url وفعّل Push Notification Settings."
+  },
+  {
+   "fieldname": "relay_enabled",
+   "fieldtype": "Check",
+   "label": "تشغيل السيرفر الوسيط",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "firebase_vapid_key",
+   "fieldtype": "Data",
+   "label": "مفتاح VAPID العام (Web Push certificate)",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "firebase_service_account",
+   "fieldtype": "Attach",
+   "label": "ملف حساب الخدمة (JSON، ملف خاص)",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "relay_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "firebase_web_config",
+   "fieldtype": "Code",
+   "label": "إعدادات Firebase للويب (JSON)",
+   "options": "JSON",
+   "permlevel": 1
+  }
+ ],
+ "links": [],
+ "modified": "2026-09-27 05:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "MS Fleet",
+ "name": "Fleet Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "System Manager",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "Fleet Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "issingle": 1
+}

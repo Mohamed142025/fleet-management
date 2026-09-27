@@ -1,0 +1,213 @@
+{
+ "app": "ms_fleet",
+ "charts": [],
+ "content": "[{\"id\": \"fleet-sc-head\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>اختصارات</b></span>\", \"col\": 12}}, {\"id\": \"fleet-sc-trip\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"رحلة جديدة\", \"col\": 3}}, {\"id\": \"fleet-sc-list\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"الرحلات\", \"col\": 3}}, {\"id\": \"fleet-sc-review\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"بانتظار المراجعة\", \"col\": 3}}, {\"id\": \"fleet-sc-app\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"تطبيق السواقين\", \"col\": 3}}, {\"id\": \"fleet-spacer\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"fleet-card-0\", \"type\": \"card\", \"data\": {\"card_name\": \"الرحلات\", \"col\": 6}}, {\"id\": \"fleet-card-1\", \"type\": \"card\", \"data\": {\"card_name\": \"العربيات والسواقين\", \"col\": 6}}, {\"id\": \"fleet-card-2\", \"type\": \"card\", \"data\": {\"card_name\": \"التقارير\", \"col\": 6}}, {\"id\": \"fleet-card-3\", \"type\": \"card\", \"data\": {\"card_name\": \"الإعدادات\", \"col\": 6}}]",
+ "creation": "2026-09-27 06:00:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "getting-started",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "إدارة الحركة",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "الرحلات",
+   "link_count": 2,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "الرحلات",
+   "link_count": 0,
+   "link_to": "Fleet Trip",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "الأماكن المحفوظة",
+   "link_count": 0,
+   "link_to": "Fleet Location",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "العربيات والسواقين",
+   "link_count": 4,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "العربيات",
+   "link_count": 0,
+   "link_to": "Vehicle",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "السواقين",
+   "link_count": 0,
+   "link_to": "Driver",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "أنواع العربيات والتسعيرة",
+   "link_count": 0,
+   "link_to": "Fleet Vehicle Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "البنزين والصيانة",
+   "link_count": 0,
+   "link_to": "Vehicle Log",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "التقارير",
+   "link_count": 3,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "سجل الرحلات",
+   "link_count": 0,
+   "link_to": "Fleet Trip Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "تكلفة النقل لكل مشروع",
+   "link_count": 0,
+   "link_to": "Fleet Cost by Project",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "تكلفة الكيلو لعربيات الشركة",
+   "link_count": 0,
+   "link_to": "Fleet Vehicle Cost",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "الإعدادات",
+   "link_count": 2,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "إعدادات الحركة",
+   "link_count": 0,
+   "link_to": "Fleet Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "إعدادات الإشعارات",
+   "link_count": 0,
+   "link_to": "Push Notification Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-09-27 06:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "MS Fleet",
+ "name": "إدارة الحركة",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [
+  {
+   "role": "Fleet Manager"
+  },
+  {
+   "role": "Fleet Requester"
+  },
+  {
+   "role": "System Manager"
+  }
+ ],
+ "sequence_id": 30.0,
+ "shortcuts": [
+  {
+   "label": "رحلة جديدة",
+   "link_to": "Fleet Trip",
+   "type": "DocType",
+   "doc_view": "New",
+   "color": "Green"
+  },
+  {
+   "label": "الرحلات",
+   "link_to": "Fleet Trip",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Blue"
+  },
+  {
+   "label": "بانتظار المراجعة",
+   "link_to": "Fleet Trip",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Orange",
+   "stats_filter": "[[\"Fleet Trip\", \"status\", \"=\", \"\\u0645\\u0646\\u062a\\u0647\\u064a\\u0629\", false]]",
+   "format": "{} بانتظار المراجعة"
+  },
+  {
+   "label": "تطبيق السواقين",
+   "type": "URL",
+   "url": "/driver",
+   "color": "Grey"
+  }
+ ],
+ "title": "إدارة الحركة",
+ "type": "Workspace"
+}

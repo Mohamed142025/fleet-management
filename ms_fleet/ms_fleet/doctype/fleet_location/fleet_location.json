@@ -1,0 +1,131 @@
+{
+ "actions": [],
+ "creation": "2026-09-27 05:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "location_name",
+  "location_type",
+  "project",
+  "warehouse",
+  "head_column",
+  "latitude",
+  "longitude",
+  "address",
+  "map_section",
+  "map"
+ ],
+ "fields": [
+  {
+   "fieldname": "location_name",
+   "fieldtype": "Data",
+   "label": "اسم المكان",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "location_type",
+   "fieldtype": "Select",
+   "label": "النوع",
+   "options": "موقع مشروع\nمخزن\nمورد\nأخرى",
+   "default": "موقع مشروع",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "المشروع",
+   "options": "Project",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "المخزن",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "head_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "latitude",
+   "fieldtype": "Float",
+   "label": "خط العرض",
+   "precision": "6",
+   "reqd": 1
+  },
+  {
+   "fieldname": "longitude",
+   "fieldtype": "Float",
+   "label": "خط الطول",
+   "precision": "6",
+   "reqd": 1
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "label": "العنوان"
+  },
+  {
+   "fieldname": "map_section",
+   "fieldtype": "Section Break",
+   "label": "الخريطة"
+  },
+  {
+   "fieldname": "map",
+   "fieldtype": "Geolocation",
+   "label": "حدد المكان على الخريطة",
+   "description": "حط علامة على المكان، وخط العرض والطول بيتملوا منها."
+  }
+ ],
+ "links": [],
+ "modified": "2026-09-27 05:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "MS Fleet",
+ "name": "Fleet Location",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "create": 1,
+   "read": 1,
+   "write": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Fleet Manager",
+   "create": 1,
+   "read": 1,
+   "write": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Fleet Requester",
+   "create": 1,
+   "read": 1,
+   "write": 1,
+   "report": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "autoname": "field:location_name",
+ "naming_rule": "By fieldname",
+ "title_field": "location_name",
+ "search_fields": "location_type,project",
+ "track_changes": 1
+}

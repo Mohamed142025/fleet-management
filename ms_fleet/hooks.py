@@ -256,3 +256,47 @@ app_license = "mit"
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+# ms_fleet: fleet and transport management with a driver PWA (/driver)
+# --------------------------------------------------------------------
+
+required_apps = ["erpnext", "hrms"]
+
+after_install = "ms_fleet.setup.after_install"
+after_migrate = "ms_fleet.setup.after_migrate"
+
+doctype_js = {
+	"Driver": "public/js/driver.js",
+}
+
+doc_events = {
+	"Purchase Invoice": {
+		"on_cancel": "ms_fleet.settlement.release_trips",
+		"on_trash": "ms_fleet.settlement.release_trips",
+	},
+}
+
+scheduler_events = {
+	"cron": {
+		"*/5 * * * *": ["ms_fleet.tasks.check_response_timeouts"],
+	},
+	"daily": ["ms_fleet.tasks.expiry_alerts"],
+}
+
+# The driver app is a single page under /driver.
+website_route_rules = [
+	{"from_route": "/driver/<path:app_path>", "to_route": "driver"},
+]
+
+# This site can be the push relay behind Frappe's push service (push_relay_server_url).
+override_whitelisted_methods = {
+	"notification_relay.api.get_config": "ms_fleet.relay.api.get_config",
+	"notification_relay.api.auth.get_credential": "ms_fleet.relay.api.get_credential",
+	"notification_relay.api.token.add": "ms_fleet.relay.api.add_token",
+	"notification_relay.api.token.remove": "ms_fleet.relay.api.remove_token",
+	"notification_relay.api.send_notification.user": "ms_fleet.relay.api.send_to_user",
+	"notification_relay.api.send_notification.topic": "ms_fleet.relay.api.topics_not_supported",
+	"notification_relay.api.topic.add": "ms_fleet.relay.api.topics_not_supported",
+	"notification_relay.api.topic.remove": "ms_fleet.relay.api.topics_not_supported",
+	"notification_relay.api.topic.subscribe": "ms_fleet.relay.api.topics_not_supported",
+	"notification_relay.api.topic.unsubscribe": "ms_fleet.relay.api.topics_not_supported",
+}

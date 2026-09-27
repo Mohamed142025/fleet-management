@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<title>{{ boot.app_name }}</title>
+		<meta name="theme-color" content="{{ boot.theme_color }}" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-title" content="{{ boot.app_name }}" />
+		<link rel="manifest" href="/api/method/ms_fleet.api.driver.manifest" />
+		<link rel="icon" type="image/png" href="/assets/ms_fleet/driver-icons/icon-192.png" />
+		<link rel="apple-touch-icon" href="/assets/ms_fleet/driver-icons/icon-192.png" />
+	</head>
+	<body>
+		<div id="app"></div>
+		<script>
+			window.csrf_token = "{{ csrf_token }}"
+			window.frappe = window.frappe || {}
+			window.frappe.boot = {{ boot | tojson }}
+		</script>
+		<script type="module" src="/src/main.js"></script>
+	</body>
+</html>

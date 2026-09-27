@@ -1,0 +1,187 @@
+{
+ "actions": [],
+ "creation": "2026-09-27 05:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "vehicle_type_name",
+  "disabled",
+  "head_column",
+  "service_item",
+  "km_section",
+  "rate_per_km",
+  "minimum_fare",
+  "empty_return_percent",
+  "km_column",
+  "free_waiting_minutes",
+  "waiting_rate_per_hour",
+  "surcharge_section",
+  "night_surcharge_percent",
+  "surcharge_column",
+  "holiday_surcharge_percent",
+  "daily_section",
+  "daily_rate",
+  "daily_hours",
+  "daily_column",
+  "overtime_rate_per_hour"
+ ],
+ "fields": [
+  {
+   "fieldname": "vehicle_type_name",
+   "fieldtype": "Data",
+   "label": "نوع العربية",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "معطّل"
+  },
+  {
+   "fieldname": "head_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "service_item",
+   "fieldtype": "Link",
+   "label": "صنف الخدمة للفوترة",
+   "options": "Item",
+   "description": "صنف خدمة (غير مخزني) بيتكتب بيه سطر الرحلة في فاتورة المشتريات."
+  },
+  {
+   "fieldname": "km_section",
+   "fieldtype": "Section Break",
+   "label": "بالكيلو"
+  },
+  {
+   "fieldname": "rate_per_km",
+   "fieldtype": "Currency",
+   "label": "سعر الكيلو",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "minimum_fare",
+   "fieldtype": "Currency",
+   "label": "الحد الأدنى للرحلة",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "empty_return_percent",
+   "fieldtype": "Percent",
+   "label": "الرجوع الفاضي %",
+   "description": "نسبة من سعر مسافة الرجوع من آخر نقطة لنقطة البداية. صفر = مفيش."
+  },
+  {
+   "fieldname": "km_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "free_waiting_minutes",
+   "fieldtype": "Int",
+   "label": "دقائق انتظار مجانية عند كل نقطة",
+   "default": "15"
+  },
+  {
+   "fieldname": "waiting_rate_per_hour",
+   "fieldtype": "Currency",
+   "label": "سعر ساعة الانتظار"
+  },
+  {
+   "fieldname": "surcharge_section",
+   "fieldtype": "Section Break",
+   "label": "الإضافي"
+  },
+  {
+   "fieldname": "night_surcharge_percent",
+   "fieldtype": "Percent",
+   "label": "إضافي ليلي %"
+  },
+  {
+   "fieldname": "surcharge_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "holiday_surcharge_percent",
+   "fieldtype": "Percent",
+   "label": "إضافي إجازة %",
+   "description": "لو الرحلة ليلية وفي إجازة، بتتحسب النسبة الأعلى فيهم."
+  },
+  {
+   "fieldname": "daily_section",
+   "fieldtype": "Section Break",
+   "label": "باليومية"
+  },
+  {
+   "fieldname": "daily_rate",
+   "fieldtype": "Currency",
+   "label": "سعر اليوم",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "daily_hours",
+   "fieldtype": "Float",
+   "label": "ساعات اليوم",
+   "default": "8"
+  },
+  {
+   "fieldname": "daily_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "overtime_rate_per_hour",
+   "fieldtype": "Currency",
+   "label": "سعر ساعة الإضافي"
+  }
+ ],
+ "links": [],
+ "modified": "2026-09-27 05:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "MS Fleet",
+ "name": "Fleet Vehicle Type",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "create": 1,
+   "read": 1,
+   "write": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Fleet Manager",
+   "create": 1,
+   "read": 1,
+   "write": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Fleet Requester",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Accounts User",
+   "read": 1,
+   "report": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "autoname": "field:vehicle_type_name",
+ "naming_rule": "By fieldname",
+ "title_field": "vehicle_type_name",
+ "track_changes": 1
+}
